@@ -1,4 +1,4 @@
-# Consulta a un API a través de APP de recat mediante uso de Graphql
+# APP - Consulta una api API React -> Graphql
 
 * Proyecto de React  [Create React App](https://github.com/facebook/create-react-app).
 * npm start
