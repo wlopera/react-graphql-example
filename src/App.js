@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useQuery } from "react-apollo";
+import "./App.css";
+import { GET_CHARACTERS } from "./graphql/Queries";
 
-function App() {
+const App = () => {
+  const { loading, error, data } = useQuery(GET_CHARACTERS);
+
+  const load = loading && <p>Cargando...</p>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>EJEMPLOS - GRAPH_QL</h1>
+      <hr />
+      {load}
+      {data &&
+        data.characters.results.map((character) => {
+          return (
+            <div key={character.id}>
+              <h3>{character.name}</h3>
+              <img src={character.image} alt="imagen" />
+            </div>
+          );
+        })}
     </div>
   );
-}
+};
 
 export default App;
